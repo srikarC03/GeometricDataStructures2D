@@ -4,7 +4,6 @@
 using namespace std;
 
 
-
 Region2D ConvexHullJarvisMarch(Point2D pointset){
     vector<SimplePoint2D> points;
     
@@ -41,6 +40,7 @@ Region2D ConvexHullJarvisMarch(Point2D pointset){
             {
                 q = j;
             }
+
             else if(orientation(points[p],points[j],points[q]) == Number("0"))
             {
                 if(distSquared(points[p],points[j]) > distSquared(points[q],points[p]))
@@ -59,7 +59,7 @@ Region2D ConvexHullJarvisMarch(Point2D pointset){
     }
 
     for(int k=0; k<hull.size(); k++){
-       cout<<"("<<hull[k].x<<", "<<hull[k].y<<")"<<endl;
+        cout<<"("<<hull[k].x<<", "<<hull[k].y<<")"<<endl;
     }
 
     vector<Segment2D> hullSegments;
