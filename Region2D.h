@@ -16,9 +16,14 @@ private:
 
 public:
     Region2D();
+    ~Region2D();
     Region2D(std::vector<Segment2D> region);
     Region2D(Region2D const &region);
     Region2D(Region2D &&region);
+
+    typedef std::vector<Segment2D>::iterator iterator;
+    iterator begin();
+    iterator end();
 };
 
 

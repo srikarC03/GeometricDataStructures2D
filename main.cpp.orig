@@ -440,10 +440,12 @@ void test_Line2D()
     std::cout << "Testing Line2D Done" << std::endl;
 }
 
+/*
 void test_Line2D() 
 {
 
 }
+*/
 
 void test_Region2D()
 {

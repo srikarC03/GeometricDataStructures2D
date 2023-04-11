@@ -5,7 +5,8 @@
 #include <regex>
 #include <vector>
 #include "Number.h"
-
+#include <stdlib.h>
+#include <time.h>
 
 void input_string(mpz_class& a, mpz_class& b, std::string c);
 std::string output_string(mpq_class value);
@@ -28,6 +29,10 @@ Number::Number(const char* s) : pimpl (new Impl())
 {
     input_string(this->pimpl->value.get_num(), this->pimpl->value.get_den(), std::string(s));
     this->pimpl->value.canonicalize();
+}
+Number::Number(long int i) : pimpl (new Impl())
+{
+    this->pimpl->value = mpq_class(i);
 }
 Number::Number(const Number& n) : pimpl( new Impl())
 {
@@ -332,4 +337,33 @@ Number sqrt(const Number& n)
     squareRoot.pimpl->value.canonicalize();
 
     return squareRoot;
+}
+
+Number Number::square() const
+{
+    return (*this) * (*this);
+}
+
+static Number zero = Number();
+static Number negative_one = Number("-1");
+static Number one = Number("1");
+
+Number Number::abs() const
+{
+    return ((*this) < zero) ? (negative_one * (*this)) : (*this);
+}
+
+Number Number::sign() const
+{
+    return ((*this) < zero) ? negative_one : one;
+}
+
+Number randomInt(int low, int high)
+{
+    return Number(rand() % high + low);
+}
+
+void generateSeed()
+{
+    srand(time(NULL));
 }

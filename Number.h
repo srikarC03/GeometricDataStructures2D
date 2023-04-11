@@ -9,6 +9,7 @@ public:
     Number(); // Default Constructor: Initialized to 0
     Number(std::string s); // String Constructor "xxx.xxx"
     Number(const char* s);
+    Number(long int i);
     Number(const Number& n); // Copy Constructor
     Number(Number&& n); // Move Constructor
     ~Number();
@@ -37,6 +38,10 @@ public:
     Number& operator*=(const Number& n);
     Number& operator/=(const Number& n);
 
+    Number square() const;
+    Number abs() const;
+    Number sign() const;
+
     // (Oscar) Input Operator
     friend std::istream& operator>>(std::istream& is, Number& n);
 
@@ -52,6 +57,7 @@ public:
 
 };
 
-
+Number randomInt(int low, int high);
+void generateSeed();
 
 #endif // NUMBER_H
